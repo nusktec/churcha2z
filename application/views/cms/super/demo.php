@@ -14,7 +14,7 @@
 <div class="content">
     <div class="container-fluid">
         <!--Breadcrumb-->
-        <? include "../layouts/breadcrumb.php"; ?>
+        <? include __DIR__."/../layouts/breadcrumb.php"; ?>
         <!-- end row -->
         <div class="row">
             <div class="col-xl-3 col-md-6">

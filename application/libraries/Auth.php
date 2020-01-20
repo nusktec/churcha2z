@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Auth.php
  * 9:41 AM | 2019 | 10
  **/
-const SESSION_NAME = "rsc_session";
+const SESSION_NAME = "rsc_session_caz";
 const SESSION_ROLE_NAME = "rsc_session_role";
 const ssk = "1eca978ca8ed19c46b10c26f8f309db70532e700";
 class auth

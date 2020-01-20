@@ -25,7 +25,7 @@
                                     class="float-right menu-arrow"><i
                                         class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="submenu">
-                        <li><a href="#">Add New</a></li>
+                        <li><a href="<? echo makeUrl("addbranch"); ?>">Add New</a></li>
                     </ul>
                     <ul class="submenu">
                         <li><a href="#">Manage Branches</a></li>

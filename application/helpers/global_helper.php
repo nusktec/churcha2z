@@ -44,7 +44,7 @@ function validateFormToken()
 function getFormCommand()
 {
     $cmd = @$_REQUEST['cmd'];
-    return $cmd ? $cmd : "No Command";
+    return $cmd ? strtolower($cmd) : "No Command";
 }
 
 //set global error

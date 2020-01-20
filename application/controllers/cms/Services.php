@@ -62,19 +62,22 @@ class Services extends CI_Controller
     }
 
     //profile index
-    public function profile()
+    public function addbranch()
     {
         //confirm is form action
         if (validateFormToken()) {
             switch (getFormCommand()) {
-                case "update-account":
+                case "addnew":
+                    $this->cmd_addbranch();
                     break;
                 default:
                     break;
             }
+            //reset the form
+            setFormToken();
         }
         //data formation
-        $data['title'] = "Account";
+        $data['title'] = "Add Branch";
         //page rendering setup
         $data['setup'] = array("vue");
         //default data
@@ -83,13 +86,31 @@ class Services extends CI_Controller
         $data["scripts"] = array("dashboard");
         //end of script
         $data['error'] = getGlobalError();
-        $data['contents'] = $this->load->view('cms/super/dashboard', $data, true);
+        $data['contents'] = $this->load->view('cms/super/branch/add-branch', $data, true);
         $this->load->view("cms/template", $data);
     }
 
     //add pastor
-    private function addPastor()
+    private function cmd_addbranch()
     {
-
+        $data = cleanArray($_POST);
+        if (!$data) {
+            setGlobalError("Form fields are empty...", 2);
+            return;
+        }
+        //proceed to storage
+        //unset not demanded values
+        unset($data['cmd']);
+        unset($data['formtoken']);
+        $res = $this->svs->svs_addbranch($data);
+        if ($res == 101) {
+            setGlobalError("Invalid CAS Code", 2);
+        }
+        if ($res == 102) {
+            setGlobalError("Location already existed", 0);
+        }
+        if ($res == 100) {
+            setGlobalError("Successfully Added !", 1);
+        }
     }
 }
