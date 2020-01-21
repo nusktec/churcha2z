@@ -101,18 +101,31 @@
                                                    class="form-control">
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Country</label>
+                                        <div class="col-lg-9">
+                                            <select class="custom-select">
+                                                <option :value="i" v-for="(c,i) in countries" :key="i">{{c.name}}
+                                                </option>
+                                                <option value="" selected="">-Select Country-</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label for="loc_cas" class="col-lg-3 col-form-label">CAS
                                             Code</label>
                                         <div class="col-lg-5">
-                                            <input id="txtStateProvinceBilling" name="loc_cas"
+                                            <input v-model="ccode" id="txtStateProvinceBilling" name="loc_cas"
                                                    type="text" class="form-control">
                                         </div>
                                         <div class="col-lg-4">
-                                            <button type="button" class="btn btn-light waves-effect form-control">
-                                                Generate One
+                                            <button type="button" class="btn btn-primary waves-effect waves-light w-100"
+                                                    data-toggle="modal" data-target=".bs-example-modal-center">Generate
+                                                Code
                                             </button>
                                         </div>
                                     </div>
@@ -144,3 +157,90 @@
     <!-- end row -->
 </div>
 <!-- container-fluid -->
+
+<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">CAS Code Generator</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Country</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select" @change="onCountryChoose($event)">
+                                        <option :value="i" v-for="(c,i) in countries" :key="i">{{c.name}}</option>
+                                        <option value="" selected="">-Select Country-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">State</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select" @change="onStatesChoose($event)">
+                                        <option :value="i" v-for="(s,i) in states" :key="i">{{s.name}}</option>
+                                        <option selected="X">-Select State-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">L.G.A</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select">
+                                        <option selected="X">-Choose LGA-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">District</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select">
+                                        <option selected="X">-Choose District-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Zone</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select">
+                                        <option selected="X">-Choose Zone-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Area</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select">
+                                        <option selected="X">-Choose Area-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-4 col-form-label">Generated Code</label>
+                                <div class="col-sm-8">
+                                    <input v-model="cas.c+'C'+cas.s+'S'+'XXXX'" class="form-control" type="text"
+                                           value=""
+                                           id="example-text-input">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+

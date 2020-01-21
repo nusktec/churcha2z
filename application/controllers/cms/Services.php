@@ -83,10 +83,39 @@ class Services extends CI_Controller
         //default data
         $data['page_data'] = array("svs" => $this->svs->svs_getuser($this->user_id));
         //load useful scripts
-        $data["scripts"] = array("dashboard");
+        $data["scripts"] = array("misc", "dashboard");
         //end of script
         $data['error'] = getGlobalError();
         $data['contents'] = $this->load->view('cms/super/branch/add-branch', $data, true);
+        $this->load->view("cms/template", $data);
+    }
+
+    //profile index
+    public function managebranch()
+    {
+        //confirm is form action
+        if (validateFormToken()) {
+            switch (getFormCommand()) {
+                case "update":
+
+                    break;
+                default:
+                    break;
+            }
+            //reset the form
+            setFormToken();
+        }
+        //data formation
+        $data['title'] = "Manage Branches";
+        //page rendering setup
+        $data['setup'] = array("vue");
+        //default data
+        $data['page_data'] = array("svs" => $this->svs->svs_getuser($this->user_id));
+        //load useful scripts
+        $data["scripts"] = array("misc", "dashboard");
+        //end of script
+        $data['error'] = getGlobalError();
+        $data['contents'] = $this->load->view('cms/super/branch/manage-branch', $data, true);
         $this->load->view("cms/template", $data);
     }
 

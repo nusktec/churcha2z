@@ -11,7 +11,7 @@
         <div class="col-sm-6">
             <h4 class="page-title">Dashboard</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Welcome back {{svs.stitle.toLowerCase()}}</li>
+                <li class="breadcrumb-item active">Welcome back {{d.svs.stitle.toLowerCase()}}</li>
             </ol>
 
         </div>

@@ -28,7 +28,7 @@
                         <li><a href="<? echo makeUrl("addbranch"); ?>">Add New</a></li>
                     </ul>
                     <ul class="submenu">
-                        <li><a href="#">Manage Branches</a></li>
+                        <li><a href="<? echo makeUrl("managebranch"); ?>">Manage Branches</a></li>
                     </ul>
                     <ul class="submenu">
                         <li><a href="#">Branch Reports</a></li>
